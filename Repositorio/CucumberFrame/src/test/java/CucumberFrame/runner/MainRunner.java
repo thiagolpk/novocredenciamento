@@ -13,7 +13,7 @@ import cucumber.api.junit.Cucumber;
 	plugin = {//"pretty", "html:target/cucumber", 
 		//	"json:target/cucumber.json", 
 			"com.cucumber.listener.ExtentCucumberFormatter:target/Resultado.html"}
-	, tags = {"@MARABERTO", "@CPF"}
+	//, tags = {"@MARABERTO", "@CPF"}
 )
 public class MainRunner {
 

@@ -29,16 +29,17 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjects.Envio_Link_Vender;
+import pageObjects.Escolha_Maquina;
 import pageObjects.Login_Gerente_BB;
 import pageObjects.Login_Gerente_BRA;
 
 import org.apache.commons.io.FileUtils;
 
 public class Login {
-	public void gerar_evidencia(String nomePrint) throws Exception 
+	public void gerar_evidencia(int nomePrint) throws Exception 
     {
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-         //The below method will save the screen shot in d drive with name "screenshot.png"
 			FileUtils.copyFile(scrFile, new File(".\\target\\"+nomePrint+".png"));
 			Reporter.addScreenCaptureFromPath(nomePrint+".png");
     }
@@ -70,13 +71,19 @@ public class Login {
 	String geradorcnpj = getDocumento("cnpj");
 	String geradorcpf = getDocumento("cpf");
 	
+	Date dataAtual = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+	String strDataAtual = sdf.format(dataAtual);
+	
+	int contador;
+	
 	WebDriver driver = new ChromeDriver();
 	
 	@Given("^Usuario acessa o site de compra de maquininha$")
 	public void usuario_acessa_o_site_de_compra_de_maquininhas() throws Throwable {
 		driver.manage().window().maximize();
 		driver.get("https://credenciamento.hml.stelo.com.br/");
-		gerar_evidencia("AcessoSite");
+		gerar_evidencia(contador); contador++;
 	}
 	
 	@Given("^Usuario acessa o site de compra de maquininha Bradesco$")
@@ -87,7 +94,7 @@ public class Login {
 		Login_Gerente_BRA.nome(driver).sendKeys("Operador Bradesco");
 		Login_Gerente_BRA.agencia(driver).sendKeys("1234");
 		Login_Gerente_BRA.funcional(driver).sendKeys("3333333");
-		gerar_evidencia("AcessoSiteBra");
+		gerar_evidencia(contador); contador++;
 		Login_Gerente_BRA.acessar(driver).click();
 	}
 	
@@ -99,17 +106,15 @@ public class Login {
 		Login_Gerente_BB.nome(driver).sendKeys("Operador BB");
 		Login_Gerente_BB.agencia(driver).sendKeys("1234");
 		Login_Gerente_BB.matricula(driver).sendKeys("F6666666");
-		gerar_evidencia("AcessoSiteBB");
+		gerar_evidencia(contador); contador++;
 		Login_Gerente_BB.acessar(driver).click();
 	}
 	
 	@And("^Escolher a opcao vender$")
 	public void escolher_a_opcao_vender() throws Throwable {
 		Thread.sleep(1000);
-		gerar_evidencia("SelecionaVender");
-		WebElement vender;
-		vender = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div[1]/div[3]/div/div[2]/div[1]/div/a"));
-		vender.click();
+		gerar_evidencia(contador); contador++;
+		Envio_Link_Vender.vender(driver).click();
 		Thread.sleep(1000);
 		for(String winHandle : driver.getWindowHandles()){
 		    driver.switchTo().window(winHandle);
@@ -118,14 +123,11 @@ public class Login {
 
 	@And("^Escolher a maquina MOB$")
 	public void escolher_a_maquina_MOB() throws Throwable {
-		WebElement operadora, adicionar, continuar;
-		operadora = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div/div[2]/ul/li[1]"));
-		operadora.click();						 
-		adicionar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div/div[3]/div/a"));
-		adicionar.click();
-		gerar_evidencia("AdicionaMob");
-		continuar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div/div/a"));
-		continuar.click();
+		
+		Escolha_Maquina.operadora(driver).click();	
+		Escolha_Maquina.adicionar(driver).click();
+		gerar_evidencia(contador); contador++;
+		Escolha_Maquina.avancar(driver).click();
 	}
 	
 	@And("^Informar o endereco$")
@@ -133,13 +135,13 @@ public class Login {
 		WebElement destinatario, cep, numero, avancar;
 		destinatario = driver.findElement(By.name("name"));
 		destinatario.sendKeys("Destinatario Teste");
-		gerar_evidencia("Endereco1");
+		gerar_evidencia(contador); contador++;
 		cep = driver.findElement(By.name("zip"));
 		cep.sendKeys("06725025");
 		numero = driver.findElement(By.name("number"));
 		numero.sendKeys("123");
-		gerar_evidencia("Endereco2");
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[8]/div[2]/div/a"));
+		gerar_evidencia(contador); contador++;
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[8]/div/div[2]/div/a"));
 		avancar.click();
 	}
 
@@ -147,9 +149,7 @@ public class Login {
 	public void informar_dados_do_meu_negocio_CNPJ() throws Throwable {
 		WebElement cnpj, email, confirmEmail, razaoSocial, nomeFantasia, inscricaoEst, categoria, selctCategoria,
 		subCategoria, selctSubCategoria, celular, identCartao, nomeResponsavel, cpfResponsavel, dtNasc, avancar;
-		Date dataAtual = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String strDataAtual = sdf.format(dataAtual);
+		
 		cnpj = driver.findElement(By.name("document"));
 		cnpj.sendKeys(geradorcnpj);
 		Thread.sleep(1000);
@@ -166,7 +166,7 @@ public class Login {
 		nomeFantasia = driver.findElement(By.name("public-name"));
 		nomeFantasia.sendKeys("Eletronic Game");
 		
-		gerar_evidencia("DadosCNPJ1");
+		gerar_evidencia(contador); contador++;
 		
 		inscricaoEst = driver.findElement(By.name("inc-est"));
 		inscricaoEst.sendKeys("123456789012");
@@ -199,9 +199,9 @@ public class Login {
 		dtNasc = driver.findElement(By.name("resp-birth-date"));
 		dtNasc.sendKeys("01011999");
 		
-		gerar_evidencia("DadosCNPJ2");
+		gerar_evidencia(contador); contador++;
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[14]/div/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[14]/div/div/div[2]/div/a"));
 		avancar.click();
 		Thread.sleep(500);
 	}
@@ -210,9 +210,9 @@ public class Login {
 	public void informar_dados_do_meu_negocio_CPF() throws Throwable {
 		WebElement cliqueCPF, cpf, email, confirmEmail, nomeCompleto, dtNasc, celular, nomeFantasia, 
 		subCategoria, selctSubCategoria, identCartao, avancar, categoria, selctCategoria;
-		Date dataAtual = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		String strDataAtual = sdf.format(dataAtual);
+		//Date dataAtual = new Date();
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		//String strDataAtual = sdf.format(dataAtual);
 		cliqueCPF = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/div[2]/div/a/i"));
 		cliqueCPF.click();
 		
@@ -235,7 +235,7 @@ public class Login {
 		celular = driver.findElement(By.name("phone"));
 		celular.sendKeys("11912341234");
 		
-		gerar_evidencia("DadosCPF1");
+		gerar_evidencia(contador); contador++;
 		
 		nomeFantasia = driver.findElement(By.name("public-name"));
 		nomeFantasia.sendKeys("Eletronic Game");
@@ -256,9 +256,9 @@ public class Login {
 		identCartao = driver.findElement(By.name("billname"));
 		identCartao.sendKeys("Eletro Game");
 		
-		gerar_evidencia("DadosCPF2");
+		gerar_evidencia(contador); contador++;
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div/div[2]/div/a"));
 		avancar.click();
 		Thread.sleep(500);
 	}
@@ -285,10 +285,10 @@ public class Login {
 		contaDigito = driver.findElement(By.name("digito"));
 		contaDigito.sendKeys("7");
 		
-		gerar_evidencia("DadosBancarios");
+		gerar_evidencia(contador); contador++;
 
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
 		avancar.click();
 		
 		Thread.sleep(20000);
@@ -310,10 +310,10 @@ public class Login {
 		contaDigito = driver.findElement(By.name("digito"));
 		contaDigito.sendKeys("7");
 		
-		gerar_evidencia("DadosBancariosBRA");
+		gerar_evidencia(contador); contador++;
 	
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
 		avancar.click();
 		
 		Thread.sleep(20000);
@@ -338,17 +338,17 @@ public class Login {
 		contaDigito = driver.findElement(By.name("digito"));
 		contaDigito.sendKeys("3");
 		
-		gerar_evidencia("DadosBancariosBB");
+		gerar_evidencia(contador); contador++;
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
 		avancar.click();
 		
 		Thread.sleep(19000);
 		
-		gerar_evidencia("IrPagamento");
+		gerar_evidencia(contador); contador++;
 		
 		
-		irPagamento = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div/a/i"));
+		irPagamento = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[4]/div/div/div/div/div/div[2]/div/a/i"));
 		irPagamento.click();
 		
 	}
@@ -358,7 +358,7 @@ public class Login {
 		try{
 			Thread.sleep(10000);
 			assertEquals("Faça o pagamento da(s) suas maquininha(s)", driver.findElement(By.xpath("/html/body/div[3]")).getText());
-			gerar_evidencia("AmbienteVTex");		
+			gerar_evidencia(contador); contador++;		
 			for(String winHandle : driver.getWindowHandles()){
 				driver.switchTo().window(winHandle);
 				driver.close();
@@ -366,7 +366,7 @@ public class Login {
 		
 		}
 		catch (Exception e) {
-			gerar_evidencia("AmbienteVTex");
+			gerar_evidencia(contador); contador++;
 			driver.quit();
 		}
 	}

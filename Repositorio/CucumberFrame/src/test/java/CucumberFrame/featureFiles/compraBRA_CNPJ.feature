@@ -1,8 +1,7 @@
-@CompraMaquina @BRA
+@CompraMaquina @BRA @CNPJ
 Feature: Compra de maquininha CNPJ BRA
   Eu quero efetuar a compra de uma maquininha
   
-     @CNPJ @BRA
   Scenario: Compra da maquina por CNPJ
     Given Usuario acessa o site de compra de maquininha Bradesco
    	And Escolher a opcao vender

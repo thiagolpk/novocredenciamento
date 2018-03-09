@@ -1,8 +1,7 @@
-@CompraMaquina @BB
+@CompraMaquina @BB @CNPJ
 Feature: Compra de maquininha CNPJ BB
   Eu quero efetuar a compra de uma maquininha
   
-     @CNPJ @BB
   Scenario: Compra da maquina por CNPJ
     Given Usuario acessa o site de compra de maquininha BB
    	And Escolher a opcao vender

@@ -29,20 +29,20 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjects.Login_Gerente_BB;
+import pageObjects.Login_Gerente_BRA;
 
 import org.apache.commons.io.FileUtils;
 
 public class Login {
-	public void getscreenshot(String nomePrint) throws Exception 
+	public void gerar_evidencia(String nomePrint) throws Exception 
     {
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
          //The below method will save the screen shot in d drive with name "screenshot.png"
 			FileUtils.copyFile(scrFile, new File(".\\target\\"+nomePrint+".png"));
+			Reporter.addScreenCaptureFromPath(nomePrint+".png");
     }
 	
-	//private static final String BaseTest = null;
-	WebDriver driver = new ChromeDriver();
-
 	private String getDocumento(String tipo) {
 		try {
 			URL url = new URL("http://geradorapp.com/api/v1/" + tipo + "/generate?token=b3a3cf63de5f428c911ed3aed3e18880");
@@ -70,62 +70,43 @@ public class Login {
 	String geradorcnpj = getDocumento("cnpj");
 	String geradorcpf = getDocumento("cpf");
 	
-
+	WebDriver driver = new ChromeDriver();
+	
 	@Given("^Usuario acessa o site de compra de maquininha$")
 	public void usuario_acessa_o_site_de_compra_de_maquininhas() throws Throwable {
 		driver.manage().window().maximize();
 		driver.get("https://credenciamento.hml.stelo.com.br/");
-		getscreenshot("AcessoSite");
-		Reporter.addScreenCaptureFromPath("AcessoSite.png");
+		gerar_evidencia("AcessoSite");
 	}
 	
 	@Given("^Usuario acessa o site de compra de maquininha Bradesco$")
 	public void usuario_acessa_o_site_de_compra_de_maquininhas_Bradesco() throws Throwable {
 		driver.manage().window().maximize();
 		driver.get("https://credenciamento.hml.stelo.com.br/credenciamento/bra");
-		WebElement nome, agencia, funcional, acessar;
-		nome = driver.findElement(By.name("nome"));
-		nome.sendKeys("Operador Bradesco");
 		
-		agencia = driver.findElement(By.name("agencia"));
-		agencia.sendKeys("1234");
-		
-		funcional = driver.findElement(By.name("funcional"));
-		funcional.sendKeys("3333333");
-		
-		getscreenshot("AcessoSiteBra");
-		Reporter.addScreenCaptureFromPath("AcessoSiteBra.png");
-		
-		acessar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div/div/div[2]/div/div[4]/div/a"));
-		acessar.click();
+		Login_Gerente_BRA.nome(driver).sendKeys("Operador Bradesco");
+		Login_Gerente_BRA.agencia(driver).sendKeys("1234");
+		Login_Gerente_BRA.funcional(driver).sendKeys("3333333");
+		gerar_evidencia("AcessoSiteBra");
+		Login_Gerente_BRA.acessar(driver).click();
 	}
 	
 	@Given("^Usuario acessa o site de compra de maquininha BB$")
 	public void usuario_acessa_o_site_de_compra_de_maquininhas_BB() throws Throwable {
 		driver.manage().window().maximize();
 		driver.get("https://credenciamento.hml.stelo.com.br/credenciamento/bb");
-		WebElement nome, agencia, matricula, acessar;
-		nome = driver.findElement(By.name("nome"));
-		nome.sendKeys("Operador BB");
-		
-		agencia = driver.findElement(By.name("agencia"));
-		agencia.sendKeys("1234");
-		
-		matricula = driver.findElement(By.name("matricula"));
-		matricula.sendKeys("F6666666");
-		
-		getscreenshot("AcessoSiteBB");
-		Reporter.addScreenCaptureFromPath("AcessoSiteBB.png");
-		
-		acessar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div/div/div[2]/div/div[4]/div/a"));
-		acessar.click();
+
+		Login_Gerente_BB.nome(driver).sendKeys("Operador BB");
+		Login_Gerente_BB.agencia(driver).sendKeys("1234");
+		Login_Gerente_BB.matricula(driver).sendKeys("F6666666");
+		gerar_evidencia("AcessoSiteBB");
+		Login_Gerente_BB.acessar(driver).click();
 	}
 	
 	@And("^Escolher a opcao vender$")
 	public void escolher_a_opcao_vender() throws Throwable {
 		Thread.sleep(1000);
-		getscreenshot("SelecionaVender");
-		Reporter.addScreenCaptureFromPath("SelecionaVender.png");
+		gerar_evidencia("SelecionaVender");
 		WebElement vender;
 		vender = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div[1]/div[3]/div/div[2]/div[1]/div/a"));
 		vender.click();
@@ -142,8 +123,7 @@ public class Login {
 		operadora.click();						 
 		adicionar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[1]/div[2]/div/div[3]/div/a"));
 		adicionar.click();
-		getscreenshot("AdicionaMob");
-		Reporter.addScreenCaptureFromPath("AdicionaMob.png");
+		gerar_evidencia("AdicionaMob");
 		continuar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div/div/a"));
 		continuar.click();
 	}
@@ -153,14 +133,12 @@ public class Login {
 		WebElement destinatario, cep, numero, avancar;
 		destinatario = driver.findElement(By.name("name"));
 		destinatario.sendKeys("Destinatario Teste");
-		getscreenshot("Endereco1");
-		Reporter.addScreenCaptureFromPath("Endereco1.png");
+		gerar_evidencia("Endereco1");
 		cep = driver.findElement(By.name("zip"));
 		cep.sendKeys("06725025");
 		numero = driver.findElement(By.name("number"));
 		numero.sendKeys("123");
-		getscreenshot("Endereco2");
-		Reporter.addScreenCaptureFromPath("Endereco2.png");
+		gerar_evidencia("Endereco2");
 		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[8]/div[2]/div/a"));
 		avancar.click();
 	}
@@ -188,8 +166,7 @@ public class Login {
 		nomeFantasia = driver.findElement(By.name("public-name"));
 		nomeFantasia.sendKeys("Eletronic Game");
 		
-		getscreenshot("DadosCNPJ1");
-		Reporter.addScreenCaptureFromPath("DadosCNPJ1.png");
+		gerar_evidencia("DadosCNPJ1");
 		
 		inscricaoEst = driver.findElement(By.name("inc-est"));
 		inscricaoEst.sendKeys("123456789012");
@@ -222,8 +199,7 @@ public class Login {
 		dtNasc = driver.findElement(By.name("resp-birth-date"));
 		dtNasc.sendKeys("01011999");
 		
-		getscreenshot("DadosCNPJ2");
-		Reporter.addScreenCaptureFromPath("DadosCNPJ2.png");
+		gerar_evidencia("DadosCNPJ2");
 		
 		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[14]/div/div[2]/div/a"));
 		avancar.click();
@@ -259,8 +235,7 @@ public class Login {
 		celular = driver.findElement(By.name("phone"));
 		celular.sendKeys("11912341234");
 		
-		getscreenshot("DadosCPF1");
-		Reporter.addScreenCaptureFromPath("DadosCPF1.png");
+		gerar_evidencia("DadosCPF1");
 		
 		nomeFantasia = driver.findElement(By.name("public-name"));
 		nomeFantasia.sendKeys("Eletronic Game");
@@ -281,8 +256,7 @@ public class Login {
 		identCartao = driver.findElement(By.name("billname"));
 		identCartao.sendKeys("Eletro Game");
 		
-		getscreenshot("DadosCPF2");
-		Reporter.addScreenCaptureFromPath("DadosCPF2.png");
+		gerar_evidencia("DadosCPF2");
 		
 		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div[2]/div/a"));
 		avancar.click();
@@ -311,8 +285,8 @@ public class Login {
 		contaDigito = driver.findElement(By.name("digito"));
 		contaDigito.sendKeys("7");
 		
-		getscreenshot("DadosBancarios");
-		Reporter.addScreenCaptureFromPath("DadosBancarios.png");
+		gerar_evidencia("DadosBancarios");
+
 		
 		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div[2]/div/a"));
 		avancar.click();
@@ -336,8 +310,8 @@ public class Login {
 		contaDigito = driver.findElement(By.name("digito"));
 		contaDigito.sendKeys("7");
 		
-		getscreenshot("DadosBancariosBRA");
-		Reporter.addScreenCaptureFromPath("DadosBancariosBRA.png");
+		gerar_evidencia("DadosBancariosBRA");
+	
 		
 		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div[2]/div/a"));
 		avancar.click();
@@ -364,16 +338,15 @@ public class Login {
 		contaDigito = driver.findElement(By.name("digito"));
 		contaDigito.sendKeys("3");
 		
-		getscreenshot("DadosBancariosBB");
-		Reporter.addScreenCaptureFromPath("DadosBancariosBB.png");
+		gerar_evidencia("DadosBancariosBB");
 		
 		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div[2]/div/a"));
 		avancar.click();
 		
 		Thread.sleep(19000);
 		
-		getscreenshot("IrPagamento");
-		Reporter.addScreenCaptureFromPath("IrPagamento.png");
+		gerar_evidencia("IrPagamento");
+		
 		
 		irPagamento = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div/a/i"));
 		irPagamento.click();
@@ -382,16 +355,19 @@ public class Login {
 
 	@Then("^Deve acessar a tela de pagamento$")
 	public void deve_acessar_a_tela_de_pagamento() throws Throwable {
-		Thread.sleep(10000);
-		assertEquals("Faça o pagamento da(s) suas maquininha(s)", driver.findElement(By.xpath("/html/body/div[3]")).getText());
-		getscreenshot("AmbienteVTex");
-		Reporter.addScreenCaptureFromPath("AmbienteVTex.png");
-		for(String winHandle : driver.getWindowHandles()){
-		    driver.switchTo().window(winHandle);
-		    driver.close();
-
+		try{
+			Thread.sleep(10000);
+			assertEquals("Faça o pagamento da(s) suas maquininha(s)", driver.findElement(By.xpath("/html/body/div[3]")).getText());
+			gerar_evidencia("AmbienteVTex");		
+			for(String winHandle : driver.getWindowHandles()){
+				driver.switchTo().window(winHandle);
+				driver.close();
+			}
+		
 		}
-		
-		
+		catch (Exception e) {
+			gerar_evidencia("AmbienteVTex");
+			driver.quit();
+		}
 	}
 }

@@ -18,6 +18,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import com.cucumber.listener.Reporter;
 import com.google.gson.Gson;
@@ -29,6 +30,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjects.Dados_Bancarios;
+import pageObjects.Dados_Estabelecimento;
+import pageObjects.Endereco_Entrega;
 import pageObjects.Envio_Link_Vender;
 import pageObjects.Escolha_Maquina;
 import pageObjects.Login_Gerente_BB;
@@ -76,8 +80,9 @@ public class Login {
 	String strDataAtual = sdf.format(dataAtual);
 	
 	int contador;
-	
+
 	WebDriver driver = new ChromeDriver();
+	//WebDriver driver = new InternetExplorerDriver();
 	
 	@Given("^Usuario acessa o site de compra de maquininha$")
 	public void usuario_acessa_o_site_de_compra_de_maquininhas() throws Throwable {
@@ -132,229 +137,101 @@ public class Login {
 	
 	@And("^Informar o endereco$")
 	public void informar_o_endereco() throws Throwable {
-		WebElement destinatario, cep, numero, avancar;
-		destinatario = driver.findElement(By.name("name"));
-		destinatario.sendKeys("Destinatario Teste");
+		Endereco_Entrega.destinatario(driver).sendKeys("Destinatario Teste");
 		gerar_evidencia(contador); contador++;
-		cep = driver.findElement(By.name("zip"));
-		cep.sendKeys("06725025");
-		numero = driver.findElement(By.name("number"));
-		numero.sendKeys("123");
+		Endereco_Entrega.cep(driver).sendKeys("06725025");
+		Endereco_Entrega.numero(driver).sendKeys("123");
 		gerar_evidencia(contador); contador++;
-		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
-		avancar.click();
+		Endereco_Entrega.continuar(driver).click();
 	}
 
 	@And("^Informar dados do meu negocio CNPJ$")
 	public void informar_dados_do_meu_negocio_CNPJ() throws Throwable {
-		WebElement cnpj, email, confirmEmail, razaoSocial, nomeFantasia, categoria, selctCategoria,
-		subCategoria, selctSubCategoria, celular, identCartao, nomeResponsavel, cpfResponsavel, dtNasc, avancar;
-		
-		cnpj = driver.findElement(By.name("document"));
-		cnpj.sendKeys(geradorcnpj);
+		Dados_Estabelecimento.documento(driver).sendKeys(geradorcnpj);
 		Thread.sleep(1000);
-		
-		email = driver.findElement(By.name("e-mail"));
-		email.sendKeys(strDataAtual + "@gmail.com");
-		
-		confirmEmail = driver.findElement(By.name("confirmacaoE-mail"));
-		confirmEmail.sendKeys(strDataAtual + "@gmail.com");
-		
-		razaoSocial = driver.findElement(By.name("company-name"));
-		razaoSocial.sendKeys("Comercio Eletronico Ltda");
-		
-		nomeFantasia = driver.findElement(By.name("public-name"));
-		nomeFantasia.sendKeys("Eletronic Game");
-		
+		Dados_Estabelecimento.email(driver).sendKeys(strDataAtual + "@gmail.com");
+		Dados_Estabelecimento.confirmaEmail(driver).sendKeys(strDataAtual + "@gmail.com");
+		Dados_Estabelecimento.razaoSocial(driver).sendKeys("Automacao Comercio Eletronico Ltda");
+		Dados_Estabelecimento.nomeFantasia(driver).sendKeys("Automacao Gamers Club");
 		gerar_evidencia(contador); contador++;
-		
-		//inscricaoEst = driver.findElement(By.name("inc-est"));
-		//inscricaoEst.sendKeys("123456789012");
-		
-		categoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[5]/div/button/span[2]"));
-		categoria.click();
-		
-		selctCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[5]/div/div/button[5]"));
-		selctCategoria.click();
+		Dados_Estabelecimento.categoria(driver).click();
+		Dados_Estabelecimento.selecionaCategoria(driver).click();
 		Thread.sleep(500);
-		
-		subCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[6]/div/button/span[2]/b"));
-		subCategoria.click();
-		
-		selctSubCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[6]/div/div/button[3]"));
-		selctSubCategoria.click();
-		
-		celular = driver.findElement(By.name("phone"));
-		celular.sendKeys("11912341234");
-		
-		identCartao = driver.findElement(By.name("billname"));
-		identCartao.sendKeys("Eletro Game");
-		
-		nomeResponsavel = driver.findElement(By.name("resp-name"));
-		nomeResponsavel.sendKeys("Proprietario Responsavel");
-		
-		cpfResponsavel = driver.findElement(By.name("resp-cpf"));
-		cpfResponsavel.sendKeys("00000000191");
-		
-		dtNasc = driver.findElement(By.name("resp-birth-date"));
-		dtNasc.sendKeys("01011999");
-		
+		Dados_Estabelecimento.subCategoria(driver).click();
+		Dados_Estabelecimento.selecionaSubCategoria(driver).click();
+		Dados_Estabelecimento.celular(driver).sendKeys("11912341234");
+		Dados_Estabelecimento.idFatura(driver).sendKeys("Gamers Club");
+		Dados_Estabelecimento.nomeResponsavel(driver).sendKeys("Proprietario Responsavel");
+		Dados_Estabelecimento.cpfResponsavel(driver).sendKeys(geradorcpf);
+		Dados_Estabelecimento.dataNasc(driver).sendKeys("01011999");
 		gerar_evidencia(contador); contador++;
-		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[12]/div/div[2]/div/a"));
-		//avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
-		avancar.click();
+		Dados_Estabelecimento.continuar(driver).click();
 		Thread.sleep(500);
 	}
 
 	@And("^Informar dados do meu negocio CPF$")
 	public void informar_dados_do_meu_negocio_CPF() throws Throwable {
-		WebElement cliqueCPF, cpf, email, confirmEmail, nomeCompleto, dtNasc, celular, nomeFantasia, 
-		subCategoria, selctSubCategoria, identCartao, avancar, categoria, selctCategoria;
-		//Date dataAtual = new Date();
-		//SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-		//String strDataAtual = sdf.format(dataAtual);
-		cliqueCPF = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[1]/div[2]/div/a/i"));
-		cliqueCPF.click();
-		
-		cpf = driver.findElement(By.name("document"));
-		cpf.sendKeys(geradorcpf);
+		Dados_Estabelecimento.cliqueCPF(driver).click();
+		Dados_Estabelecimento.documento(driver).sendKeys(geradorcpf);
 		Thread.sleep(1000);
-		
-		email = driver.findElement(By.name("e-mail"));
-		email.sendKeys(strDataAtual + "@gmail.com");
-		
-		confirmEmail = driver.findElement(By.name("confirmae-mail"));
-		confirmEmail.sendKeys(strDataAtual + "@gmail.com");
-		
-		nomeCompleto = driver.findElement(By.name("company-name"));
-		nomeCompleto.sendKeys("Proprietario Nome");
-		
-		dtNasc = driver.findElement(By.name("resp-birth-date"));
-		dtNasc.sendKeys("01011999");
-		
-		celular = driver.findElement(By.name("phone"));
-		celular.sendKeys("11912341234");
-		
+		Dados_Estabelecimento.email(driver).sendKeys(strDataAtual + "@gmail.com");
+		Dados_Estabelecimento.confirmaEmail2(driver).sendKeys(strDataAtual + "@gmail.com");
+		Dados_Estabelecimento.nomeCompleto(driver).sendKeys("Proprietario Nome");
+		Dados_Estabelecimento.dataNasc(driver).sendKeys("01011999");
+		Dados_Estabelecimento.celular(driver).sendKeys("11912341234");
 		gerar_evidencia(contador); contador++;
-		
-		nomeFantasia = driver.findElement(By.name("public-name"));
-		nomeFantasia.sendKeys("Eletronic Game");
-		
-		categoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/button/span[2]"));
-		categoria.click();
-		
-		selctCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/div/button[5]"));
-		selctCategoria.click();
+		Dados_Estabelecimento.nomeFantasia(driver).sendKeys("Automacao Gamers Club");
+		gerar_evidencia(contador); contador++;
+		Dados_Estabelecimento.categoriaCpf(driver).click();
+		Dados_Estabelecimento.selecionaCategoriaCpf(driver).click();
 		Thread.sleep(500);
-		
-		subCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/button/span[2]"));
-		subCategoria.click();
-		
-		selctSubCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/div/button[1]"));
-		selctSubCategoria.click();
-		
-		identCartao = driver.findElement(By.name("billname"));
-		identCartao.sendKeys("Eletro Game");
-		
+		Dados_Estabelecimento.subCategoriaCpf(driver).click();
+		Dados_Estabelecimento.selecionaSubCategoriaCpf(driver).click();
+		Dados_Estabelecimento.idFatura(driver).sendKeys("Gamers Club");
 		gerar_evidencia(contador); contador++;
-		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div[2]/div/a"));
-		//avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
-		avancar.click();
+		Dados_Estabelecimento.continuarCpf(driver).click();
 		Thread.sleep(500);
 	}
 	
 	@When("^Informar dados bancarios$")
 	public void informar_dados_bancarios() throws Throwable {
 		Thread.sleep(500);
-		WebElement banco, selctBanco, tipoCorrente, agencia, conta, contaDigito, avancar;
-		banco = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div/button/span[2]"));
-		banco.click();
-		
-		selctBanco = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div/div/div/button[5]"));
-		selctBanco.click();
-		
-		tipoCorrente = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/div/div[1]/ul/li[1]/span"));
-		tipoCorrente.click();
-		
-		agencia = driver.findElement(By.name("agencia"));
-		agencia.sendKeys("1234");
-		
-		conta = driver.findElement(By.name("conta"));
-		conta.sendKeys("123456");
-		
-		contaDigito = driver.findElement(By.name("digito"));
-		contaDigito.sendKeys("7");
-		
+		Dados_Bancarios.banco(driver).click();
+		Dados_Bancarios.selecionaBanco(driver).click();
+		Dados_Bancarios.tipoCorrente(driver).click();
+		Dados_Bancarios.agencia(driver).sendKeys("1234");
+		Dados_Bancarios.conta(driver).sendKeys("123456");
+		Dados_Bancarios.contaDigito(driver).sendKeys("9");
 		gerar_evidencia(contador); contador++;
-
-		
-		//avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
-		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
-		avancar.click();
-		
+		Dados_Bancarios.continuar(driver).click();
 		Thread.sleep(20000);
 	}
 	
 	@When("^Informar dados bancarios BRA$")
 	public void informar_dados_bancarios_BRA() throws Throwable {
 		Thread.sleep(500);
-		WebElement tipoCorrente, agencia, conta, contaDigito, avancar;
-		tipoCorrente = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/div/div[1]/ul/li[1]/span"));
-		tipoCorrente.click();
-		
-		agencia = driver.findElement(By.name("agencia"));
-		agencia.sendKeys("1234");
-		
-		conta = driver.findElement(By.name("conta"));
-		conta.sendKeys("123456");
-		
-		contaDigito = driver.findElement(By.name("digito"));
-		contaDigito.sendKeys("7");
-		
+		Dados_Bancarios.tipoCorrente(driver).click();
+		Dados_Bancarios.agencia(driver).sendKeys("1234");
+		Dados_Bancarios.conta(driver).sendKeys("123456");
+		Dados_Bancarios.contaDigito(driver).sendKeys("9");
 		gerar_evidencia(contador); contador++;
-	
-		
-		//avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
-		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
-		avancar.click();
-		
+		Dados_Bancarios.continuar(driver).click();
 		Thread.sleep(20000);
 	}
 
 	@When("^Informar dados bancarios BB$")
 	public void informar_dados_bancarios_BB() throws Throwable {
 		Thread.sleep(500);
-		WebElement tipoCorrente, agencia, agenciaDigito, conta, contaDigito, avancar, irPagamento;
-		tipoCorrente = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[4]/div/div/div[1]/ul/li[1]/span"));
-		tipoCorrente.click();
-		
-		agencia = driver.findElement(By.name("agencia"));
-		agencia.sendKeys("1234");
-		
-		agenciaDigito = driver.findElement(By.name("digito-ag"));
-		agenciaDigito.sendKeys("3");
-		
-		conta = driver.findElement(By.name("conta"));
-		conta.sendKeys("1234");
-		
-		contaDigito = driver.findElement(By.name("digito"));
-		contaDigito.sendKeys("3");
-		
+		Dados_Bancarios.tipoCorrente(driver).click();
+		Dados_Bancarios.agencia(driver).sendKeys("1234");
+		Dados_Bancarios.agenciaDigito(driver).sendKeys("3");
+		Dados_Bancarios.conta(driver).sendKeys("1234");
+		Dados_Bancarios.contaDigito(driver).sendKeys("3");
 		gerar_evidencia(contador); contador++;
-		
-		//avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
-		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
-		avancar.click();
-		
+		Dados_Bancarios.continuar(driver).click();
 		Thread.sleep(19000);
-		
 		gerar_evidencia(contador); contador++;
-		
-		
-		irPagamento = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div/a/i"));
-		irPagamento.click();
+		Dados_Bancarios.irPagamento(driver).click();
 		
 	}
 
@@ -372,7 +249,7 @@ public class Login {
 		}
 		catch (Exception e) {
 			gerar_evidencia(contador); contador++;
-			driver.quit();
+			driver.close();
 		}
 	}
 }

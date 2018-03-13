@@ -141,13 +141,13 @@ public class Login {
 		numero = driver.findElement(By.name("number"));
 		numero.sendKeys("123");
 		gerar_evidencia(contador); contador++;
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[8]/div/div[2]/div/a"));
+		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
 		avancar.click();
 	}
 
 	@And("^Informar dados do meu negocio CNPJ$")
 	public void informar_dados_do_meu_negocio_CNPJ() throws Throwable {
-		WebElement cnpj, email, confirmEmail, razaoSocial, nomeFantasia, inscricaoEst, categoria, selctCategoria,
+		WebElement cnpj, email, confirmEmail, razaoSocial, nomeFantasia, categoria, selctCategoria,
 		subCategoria, selctSubCategoria, celular, identCartao, nomeResponsavel, cpfResponsavel, dtNasc, avancar;
 		
 		cnpj = driver.findElement(By.name("document"));
@@ -168,20 +168,20 @@ public class Login {
 		
 		gerar_evidencia(contador); contador++;
 		
-		inscricaoEst = driver.findElement(By.name("inc-est"));
-		inscricaoEst.sendKeys("123456789012");
+		//inscricaoEst = driver.findElement(By.name("inc-est"));
+		//inscricaoEst.sendKeys("123456789012");
 		
-		categoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/button/span[2]"));
+		categoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[5]/div/button/span[2]"));
 		categoria.click();
 		
-		selctCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/div/button[4]"));
+		selctCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[5]/div/div/button[5]"));
 		selctCategoria.click();
 		Thread.sleep(500);
 		
-		subCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/button/span[2]/b"));
+		subCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[6]/div/button/span[2]/b"));
 		subCategoria.click();
 		
-		selctSubCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/div/button[3]"));
+		selctSubCategoria = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[6]/div/div/button[3]"));
 		selctSubCategoria.click();
 		
 		celular = driver.findElement(By.name("phone"));
@@ -201,7 +201,8 @@ public class Login {
 		
 		gerar_evidencia(contador); contador++;
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[14]/div/div/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[12]/div/div[2]/div/a"));
+		//avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
 		avancar.click();
 		Thread.sleep(500);
 	}
@@ -258,7 +259,8 @@ public class Login {
 		
 		gerar_evidencia(contador); contador++;
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div/div[2]/div/a"));
+		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div[2]/div/a"));
+		//avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
 		avancar.click();
 		Thread.sleep(500);
 	}
@@ -288,7 +290,8 @@ public class Login {
 		gerar_evidencia(contador); contador++;
 
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
+		//avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
+		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
 		avancar.click();
 		
 		Thread.sleep(20000);
@@ -313,7 +316,8 @@ public class Login {
 		gerar_evidencia(contador); contador++;
 	
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
+		//avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
+		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
 		avancar.click();
 		
 		Thread.sleep(20000);
@@ -340,7 +344,8 @@ public class Login {
 		
 		gerar_evidencia(contador); contador++;
 		
-		avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
+		//avancar = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[7]/div/div[2]/div/a"));
+		avancar = driver.findElement(By.cssSelector("a[class='btn btn-primary']"));
 		avancar.click();
 		
 		Thread.sleep(19000);
@@ -348,7 +353,7 @@ public class Login {
 		gerar_evidencia(contador); contador++;
 		
 		
-		irPagamento = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[4]/div/div/div/div/div/div[2]/div/a/i"));
+		irPagamento = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div/a/i"));
 		irPagamento.click();
 		
 	}

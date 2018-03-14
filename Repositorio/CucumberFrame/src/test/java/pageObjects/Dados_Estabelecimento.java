@@ -64,8 +64,11 @@ public class Dados_Estabelecimento {
 	////////////CPF/////////////
 	public static WebElement categoriaCpf (WebDriver driver){
 	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/button/span[2]"));
+	  //  element = driver.findElement(By.cssSelector("a[class='custom-label']"));
 	    return element;	 
 	}
+	
+	
 	
 	public static WebElement selecionaCategoriaCpf (WebDriver driver){
 	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/div/button[5]"));
@@ -115,7 +118,7 @@ public class Dados_Estabelecimento {
 	}
 	
 	public static WebElement continuarCpf (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div/div[2]/div/a"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div[2]/div/a"));
 	    return element;	 
 	}
 	

@@ -35,10 +35,13 @@ import pageObjects.Dados_Estabelecimento;
 import pageObjects.Endereco_Entrega;
 import pageObjects.Envio_Link_Vender;
 import pageObjects.Escolha_Maquina;
+import pageObjects.Login_Cielo;
 import pageObjects.Login_Gerente_BB;
 import pageObjects.Login_Gerente_BRA;
 
 import org.apache.commons.io.FileUtils;
+
+
 
 public class Login {
 	public void gerar_evidencia(int nomePrint) throws Exception 
@@ -113,6 +116,18 @@ public class Login {
 		Login_Gerente_BB.matricula(driver).sendKeys("F6666666");
 		gerar_evidencia(contador); contador++;
 		Login_Gerente_BB.acessar(driver).click();
+	}
+	
+	@Given("^Usuario acessa o site de compra de maquininha CIELO$")
+	public void usuario_acessa_o_site_de_compra_de_maquininhas_CIELO() throws Throwable {
+		driver.manage().window().maximize();
+		driver.get("https://credenciamento.hml.stelo.com.br/credenciamento/cielo");
+
+		Login_Cielo.nome(driver).sendKeys("Operador Cielo");
+		Login_Cielo.cpf(driver).sendKeys(geradorcpf);
+		Login_Cielo.loja(driver).click();
+		gerar_evidencia(contador); contador++;
+		Login_Cielo.acessar(driver).click();
 	}
 	
 	@And("^Escolher a opcao vender$")
@@ -205,6 +220,10 @@ public class Login {
 		gerar_evidencia(contador); contador++;
 		Dados_Bancarios.continuar(driver).click();
 		Thread.sleep(20000);
+		if(Dados_Bancarios.irPagamento(driver).isDisplayed()){
+			gerar_evidencia(contador); contador++;
+			Dados_Bancarios.irPagamento(driver).click();
+		};
 	}
 	
 	@When("^Informar dados bancarios BRA$")

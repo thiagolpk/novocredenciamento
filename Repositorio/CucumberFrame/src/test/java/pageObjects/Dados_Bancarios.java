@@ -8,7 +8,7 @@ public class Dados_Bancarios {
 	private static WebElement element = null;
 	 
 	public static WebElement banco (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div/button/span[2]"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[3]/div/div/button/span"));
 	    return element;	 
 	}
 	
@@ -43,7 +43,7 @@ public class Dados_Bancarios {
 	}
 	
 	public static WebElement irPagamento (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[3]/div/div/div/div/div[2]/div/div[2]/div/a/i"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[4]/div/div/div/div/div/div[2]/div/a/i"));
 	    return element;	 
 	}
 	

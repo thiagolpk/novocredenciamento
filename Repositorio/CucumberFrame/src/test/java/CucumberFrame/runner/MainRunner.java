@@ -14,7 +14,7 @@ import cucumber.api.junit.Cucumber;
 		//	"json:target/cucumber.json", 
 			"com.cucumber.listener.ExtentCucumberFormatter:target/Resultado.html"}
 	//, tags = {"@BRA", "@CPF"}
-	, tags = {"@MARABERTO"}
+	 ,tags = {"@CIELO", "@CPF"}
 )
 public class MainRunner {
 

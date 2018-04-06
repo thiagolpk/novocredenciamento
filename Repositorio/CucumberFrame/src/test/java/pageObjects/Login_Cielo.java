@@ -29,7 +29,8 @@ public class Login_Cielo {
 	
 	public static WebElement acessar (WebDriver driver){
 		 
-		    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div/div/div[2]/div/div[4]/div/a"));
+		    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[4]/div/div/a"));
+
 		 
 		 return element;
 		 
@@ -37,7 +38,7 @@ public class Login_Cielo {
 	
 	public static WebElement loja (WebDriver driver){
 		 
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div/div/div[2]/div/div[3]/ul/li[1]"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[3]/div/ul/li[1]"));
 	 
 	 return element;
 	 

@@ -1,4 +1,4 @@
-@CompraMaquina @CIELO@CNPJ
+@CompraMaquina @CIELO @CNPJ
 Feature: Compra de maquininha CNPJ CIELO
   Eu quero efetuar a compra de uma maquininha
 

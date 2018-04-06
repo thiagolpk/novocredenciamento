@@ -32,6 +32,7 @@
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
 						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
 			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
@@ -45,7 +46,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Mar 16, 2018 04:49:03 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Apr 5, 2018 04:19:45 PM</span>
 				</a>
 			</li>
 			<li>
@@ -71,6 +72,7 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -83,9 +85,7 @@
 					<i class='material-icons'>local_offer</i> Category
 				</a>
 				<ul id='category-toggle' class='dropdown-content'>
-					<li><a href='#'>@CompraMaquina</a></li>
-					<li><a href='#'>@CIELO</a></li>
-					<li><a href='#'>@CPF</a></li>
+					<li><a href='#'>@Esquemadecenario</a></li>
 					<li class='divider'></li>
 					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
 				</ul>
@@ -133,10 +133,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>7</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='92.857%'><span class='strong'>39</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='7.143%'>3</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -148,10 +148,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>7</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='92.857%'><span class='strong'>39</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='7.143%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -166,40 +166,66 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active has-leaf pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active has-leaf fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>Compra de maquininha CPF CIELO</span>
-						<span class='test-time'>Mar 16, 2018 04:49:03 PM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-name'>Teste Esquema de Cenario</span>
+						<span class='test-time'>Apr 5, 2018 04:19:45 PM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Mar 16, 2018 04:49:03 PM</span>
-	<span class='label end-time'>Mar 16, 2018 04:50:00 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 56s+778ms</span>
+	<span class='label start-time'>Apr 5, 2018 04:19:45 PM</span>
+	<span class='label end-time'>Apr 5, 2018 04:25:28 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 5m 42s+783ms</span>
 </div>
 	<div class='test-attributes'>
 			<div class='category-list'>
-				<span class='category label white-text'>@CompraMaquina</span>
-				<span class='category label white-text'>@CIELO</span>
-				<span class='category label white-text'>@CPF</span>
+				<span class='category label white-text'>@Esquemadecenario</span>
 			</div>
 	</div>
 	<ul class='collapsible node-list' data-collapsible='accordion'>
 		
-				<li class='node level-1  pass' status='pass' test-id='2'>
+				<li class='node level-1  fail' status='fail' test-id='2'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Scenario Outline: Compra da maquina por CPF</div>						
+						<span class='node-time'>Apr 5, 2018 04:19:45 PM</span>
+						<span class='node-duration'>0h 5m 42s+774ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='info'>
+													<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+													<td class='timestamp'>4:19:45 PM</td>
+													<td class='step-details'><table><tr><td>canal</td><td>cadastroPessoa</td><td>nomeFantasia</td></tr><tr><td>CIELO</td><td>CPF</td><td>Loja CPF Cielo</td></tr><tr><td>CIELO</td><td>CNPJ</td><td>Loja CNPJ Cielo</td></tr><tr><td>BRA</td><td>CPF</td><td>Loja CPF Bra</td></tr><tr><td>BRA</td><td>CNPJ</td><td>Loja CNPJ Bra</td></tr><tr><td>BB</td><td>CPF</td><td>Loja CPF BB</td></tr><tr><td>BB</td><td>CNPJ</td><td>Loja CNPJ BB</td></tr></table></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-2  pass' status='pass' test-id='3'>
 					<div class='collapsible-header'>
 						<div class='node-name'>Scenario: Compra da maquina por CPF</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:03 PM</span>
-						<span class='node-duration'>0h 0m 56s+717ms</span>
+						<span class='node-time'>Apr 5, 2018 04:19:45 PM</span>
+						<span class='node-duration'>0h 1m 1s+318ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<ul class='collapsible node-list' data-collapsible='accordion'>
-				<li class='node level-2 leaf pass' status='pass' test-id='3'>
+				<li class='node level-3 leaf pass' status='pass' test-id='4'>
 					<div class='collapsible-header'>
-						<div class='node-name'>Given Usuario acessa o site de compra de maquininha CIELO</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:03 PM</span>
-						<span class='node-duration'>0h 0m 9s+871ms</span>
+						<div class='node-name'>Given Usuario acessa o site de compra de maquininha "CIELO"</div>						
+						<span class='node-time'>Apr 5, 2018 04:19:45 PM</span>
+						<span class='node-duration'>0h 0m 10s+778ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -215,7 +241,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:49:13 PM</td>
+													<td class='timestamp'>4:19:56 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -226,11 +252,11 @@
 								</div>
 						</div>
 				</li>
-				<li class='node level-2 leaf pass' status='pass' test-id='4'>
+				<li class='node level-3 leaf pass' status='pass' test-id='5'>
 					<div class='collapsible-header'>
 						<div class='node-name'>And Escolher a opcao vender</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:13 PM</span>
-						<span class='node-duration'>0h 0m 2s+646ms</span>
+						<span class='node-time'>Apr 5, 2018 04:19:56 PM</span>
+						<span class='node-duration'>0h 0m 2s+612ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -246,7 +272,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:49:16 PM</td>
+													<td class='timestamp'>4:19:58 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -257,11 +283,11 @@
 								</div>
 						</div>
 				</li>
-				<li class='node level-2 leaf pass' status='pass' test-id='5'>
+				<li class='node level-3 leaf pass' status='pass' test-id='6'>
 					<div class='collapsible-header'>
 						<div class='node-name'>And Escolher a maquina MOB</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:16 PM</span>
-						<span class='node-duration'>0h 0m 1s+880ms</span>
+						<span class='node-time'>Apr 5, 2018 04:19:58 PM</span>
+						<span class='node-duration'>0h 0m 1s+864ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -277,7 +303,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:49:17 PM</td>
+													<td class='timestamp'>4:20:00 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -288,11 +314,11 @@
 								</div>
 						</div>
 				</li>
-				<li class='node level-2 leaf pass' status='pass' test-id='6'>
+				<li class='node level-3 leaf pass' status='pass' test-id='7'>
 					<div class='collapsible-header'>
 						<div class='node-name'>And Informar o endereco</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:18 PM</span>
-						<span class='node-duration'>0h 0m 1s+453ms</span>
+						<span class='node-time'>Apr 5, 2018 04:20:00 PM</span>
+						<span class='node-duration'>0h 0m 1s+451ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -308,7 +334,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:49:19 PM</td>
+													<td class='timestamp'>4:20:02 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -320,11 +346,11 @@
 								</div>
 						</div>
 				</li>
-				<li class='node level-2 leaf pass' status='pass' test-id='7'>
+				<li class='node level-3 leaf pass' status='pass' test-id='8'>
 					<div class='collapsible-header'>
-						<div class='node-name'>And Informar dados do meu negocio CPF</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:19 PM</span>
-						<span class='node-duration'>0h 0m 5s+777ms</span>
+						<div class='node-name'>And Informar dados do meu negocio "CPF" com "Loja CPF Cielo"</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:02 PM</span>
+						<span class='node-duration'>0h 0m 6s+397ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -340,7 +366,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:49:25 PM</td>
+													<td class='timestamp'>4:20:08 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -353,11 +379,11 @@
 								</div>
 						</div>
 				</li>
-				<li class='node level-2 leaf pass' status='pass' test-id='8'>
+				<li class='node level-3 leaf pass' status='pass' test-id='9'>
 					<div class='collapsible-header'>
-						<div class='node-name'>When Informar dados bancarios</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:25 PM</span>
-						<span class='node-duration'>0h 0m 24s+329ms</span>
+						<div class='node-name'>When Informar dados bancarios "CIELO"</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:08 PM</span>
+						<span class='node-duration'>0h 0m 24s+506ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -373,7 +399,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:49:49 PM</td>
+													<td class='timestamp'>4:20:32 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -385,11 +411,11 @@
 								</div>
 						</div>
 				</li>
-				<li class='node level-2 leaf pass' status='pass' test-id='9'>
+				<li class='node level-3 leaf pass' status='pass' test-id='10'>
 					<div class='collapsible-header'>
 						<div class='node-name'>Then Deve acessar a tela de pagamento</div>						
-						<span class='node-time'>Mar 16, 2018 04:49:49 PM</span>
-						<span class='node-duration'>0h 0m 10s+745ms</span>
+						<span class='node-time'>Apr 5, 2018 04:20:32 PM</span>
+						<span class='node-duration'>0h 0m 13s+697ms</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 						<div class='collapsible-body'>
@@ -405,7 +431,7 @@
 										<tbody>
 												<tr class='log' status='pass'>
 													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-													<td class='timestamp'>4:50:00 PM</td>
+													<td class='timestamp'>4:20:46 PM</td>
 													<td class='step-details'>passed</td>
 												</tr>
 										</tbody>
@@ -415,6 +441,1164 @@
 										</ul>
 								</div>
 						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-2  pass' status='pass' test-id='11'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Scenario: Compra da maquina por CPF</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:46 PM</span>
+						<span class='node-duration'>0h 0m 55s+862ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-3 leaf pass' status='pass' test-id='12'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Given Usuario acessa o site de compra de maquininha "CIELO"</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:46 PM</span>
+						<span class='node-duration'>0h 0m 8s+772ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:20:55 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='0.png' width='10%' src='' data-src='0.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='13'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a opcao vender</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:55 PM</span>
+						<span class='node-duration'>0h 0m 2s+556ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:20:58 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='1.png' width='10%' src='' data-src='1.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='14'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a maquina MOB</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:58 PM</span>
+						<span class='node-duration'>0h 0m 1s+819ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:20:59 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='2.png' width='10%' src='' data-src='2.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='15'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar o endereco</div>						
+						<span class='node-time'>Apr 5, 2018 04:20:59 PM</span>
+						<span class='node-duration'>0h 0m 1s+647ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:01 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='3.png' width='10%' src='' data-src='3.png'></li>
+												<li><img data-featherlight='4.png' width='10%' src='' data-src='4.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='16'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar dados do meu negocio "CNPJ" com "Loja CNPJ Cielo"</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:01 PM</span>
+						<span class='node-duration'>0h 0m 6s+521ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:08 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='5.png' width='10%' src='' data-src='5.png'></li>
+												<li><img data-featherlight='6.png' width='10%' src='' data-src='6.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='17'>
+					<div class='collapsible-header'>
+						<div class='node-name'>When Informar dados bancarios "CIELO"</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:08 PM</span>
+						<span class='node-duration'>0h 0m 23s+352ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:31 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='7.png' width='10%' src='' data-src='7.png'></li>
+												<li><img data-featherlight='8.png' width='10%' src='' data-src='8.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='18'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Then Deve acessar a tela de pagamento</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:31 PM</span>
+						<span class='node-duration'>0h 0m 11s+187ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:42 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='9.png' width='10%' src='' data-src='9.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-2  fail' status='fail' test-id='19'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Scenario: Compra da maquina por CPF</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:42 PM</span>
+						<span class='node-duration'>0h 0m 52s+380ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-3 leaf pass' status='pass' test-id='20'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Given Usuario acessa o site de compra de maquininha "BRA"</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:42 PM</span>
+						<span class='node-duration'>0h 0m 8s+727ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:51 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='0.png' width='10%' src='' data-src='0.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='21'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a opcao vender</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:51 PM</span>
+						<span class='node-duration'>0h 0m 2s+603ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:53 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='1.png' width='10%' src='' data-src='1.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='22'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a maquina MOB</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:53 PM</span>
+						<span class='node-duration'>0h 0m 1s+824ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:55 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='2.png' width='10%' src='' data-src='2.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='23'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar o endereco</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:55 PM</span>
+						<span class='node-duration'>0h 0m 1s+489ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:21:57 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='3.png' width='10%' src='' data-src='3.png'></li>
+												<li><img data-featherlight='4.png' width='10%' src='' data-src='4.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='24'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar dados do meu negocio "CPF" com "Loja CPF Bra"</div>						
+						<span class='node-time'>Apr 5, 2018 04:21:57 PM</span>
+						<span class='node-duration'>0h 0m 6s+202ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:03 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='5.png' width='10%' src='' data-src='5.png'></li>
+												<li><img data-featherlight='6.png' width='10%' src='' data-src='6.png'></li>
+												<li><img data-featherlight='7.png' width='10%' src='' data-src='7.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='25'>
+					<div class='collapsible-header'>
+						<div class='node-name'>When Informar dados bancarios "BRA"</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:03 PM</span>
+						<span class='node-duration'>0h 0m 21s+316ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:24 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='8.png' width='10%' src='' data-src='8.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf fail' status='fail' test-id='26'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Then Deve acessar a tela de pagamento</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:24 PM</span>
+						<span class='node-duration'>0h 0m 10s+213ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='fail'>
+													<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+													<td class='timestamp'>4:22:34 PM</td>
+													<td class='step-details'><textarea>org.junit.ComparisonFailure: expected:<[Faça o pagamento da(s) suas maquininha(s)]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at CucumberFrame.stepsFiles.Login.deve_acessar_a_tela_de_pagamento(Login.java:303)
+	at ✽.Then Deve acessar a tela de pagamento(esquemacenario.feature:12)
+</textarea></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-2  fail' status='fail' test-id='27'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Scenario: Compra da maquina por CPF</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:34 PM</span>
+						<span class='node-duration'>0h 0m 52s+616ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-3 leaf pass' status='pass' test-id='28'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Given Usuario acessa o site de compra de maquininha "BRA"</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:34 PM</span>
+						<span class='node-duration'>0h 0m 8s+388ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:43 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='0.png' width='10%' src='' data-src='0.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='29'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a opcao vender</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:43 PM</span>
+						<span class='node-duration'>0h 0m 2s+614ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:45 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='1.png' width='10%' src='' data-src='1.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='30'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a maquina MOB</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:45 PM</span>
+						<span class='node-duration'>0h 0m 1s+862ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:47 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='2.png' width='10%' src='' data-src='2.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='31'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar o endereco</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:47 PM</span>
+						<span class='node-duration'>0h 0m 1s+443ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:49 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='3.png' width='10%' src='' data-src='3.png'></li>
+												<li><img data-featherlight='4.png' width='10%' src='' data-src='4.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='32'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar dados do meu negocio "CNPJ" com "Loja CNPJ Bra"</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:49 PM</span>
+						<span class='node-duration'>0h 0m 6s+798ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:22:56 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='5.png' width='10%' src='' data-src='5.png'></li>
+												<li><img data-featherlight='6.png' width='10%' src='' data-src='6.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='33'>
+					<div class='collapsible-header'>
+						<div class='node-name'>When Informar dados bancarios "BRA"</div>						
+						<span class='node-time'>Apr 5, 2018 04:22:56 PM</span>
+						<span class='node-duration'>0h 0m 21s+324ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:23:17 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='7.png' width='10%' src='' data-src='7.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf fail' status='fail' test-id='34'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Then Deve acessar a tela de pagamento</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:17 PM</span>
+						<span class='node-duration'>0h 0m 10s+182ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='fail'>
+													<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+													<td class='timestamp'>4:23:27 PM</td>
+													<td class='step-details'><textarea>org.junit.ComparisonFailure: expected:<[Faça o pagamento da(s) suas maquininha(s)]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at CucumberFrame.stepsFiles.Login.deve_acessar_a_tela_de_pagamento(Login.java:303)
+	at ✽.Then Deve acessar a tela de pagamento(esquemacenario.feature:12)
+</textarea></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-2  fail' status='fail' test-id='35'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Scenario: Compra da maquina por CPF</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:27 PM</span>
+						<span class='node-duration'>0h 1m 0s+152ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-3 leaf pass' status='pass' test-id='36'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Given Usuario acessa o site de compra de maquininha "BB"</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:27 PM</span>
+						<span class='node-duration'>0h 0m 9s+664ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:23:37 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='0.png' width='10%' src='' data-src='0.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='37'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a opcao vender</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:37 PM</span>
+						<span class='node-duration'>0h 0m 2s+617ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:23:39 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='1.png' width='10%' src='' data-src='1.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='38'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a maquina MOB</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:39 PM</span>
+						<span class='node-duration'>0h 0m 1s+863ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:23:41 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='2.png' width='10%' src='' data-src='2.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='39'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar o endereco</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:41 PM</span>
+						<span class='node-duration'>0h 0m 6s+588ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:23:48 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='3.png' width='10%' src='' data-src='3.png'></li>
+												<li><img data-featherlight='4.png' width='10%' src='' data-src='4.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='40'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar dados do meu negocio "CPF" com "Loja CPF BB"</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:48 PM</span>
+						<span class='node-duration'>0h 0m 6s+270ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:23:54 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='5.png' width='10%' src='' data-src='5.png'></li>
+												<li><img data-featherlight='6.png' width='10%' src='' data-src='6.png'></li>
+												<li><img data-featherlight='7.png' width='10%' src='' data-src='7.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='41'>
+					<div class='collapsible-header'>
+						<div class='node-name'>When Informar dados bancarios "BB"</div>						
+						<span class='node-time'>Apr 5, 2018 04:23:54 PM</span>
+						<span class='node-duration'>0h 0m 22s+985ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:24:17 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='8.png' width='10%' src='' data-src='8.png'></li>
+												<li><img data-featherlight='9.png' width='10%' src='' data-src='9.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf fail' status='fail' test-id='42'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Then Deve acessar a tela de pagamento</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:17 PM</span>
+						<span class='node-duration'>0h 0m 10s+160ms</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='fail'>
+													<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+													<td class='timestamp'>4:24:27 PM</td>
+													<td class='step-details'><textarea>org.junit.ComparisonFailure: expected:<[Faça o pagamento da(s) suas maquininha(s)]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at CucumberFrame.stepsFiles.Login.deve_acessar_a_tela_de_pagamento(Login.java:303)
+	at ✽.Then Deve acessar a tela de pagamento(esquemacenario.feature:12)
+</textarea></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+						</div>
+				</li>
+						</ul>
+				</li>
+				<li class='node level-2  pass' status='pass' test-id='43'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Scenario: Compra da maquina por CPF</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:27 PM</span>
+						<span class='node-duration'>0h 1m 0s+348ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<ul class='collapsible node-list' data-collapsible='accordion'>
+				<li class='node level-3 leaf pass' status='pass' test-id='44'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Given Usuario acessa o site de compra de maquininha "BB"</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:27 PM</span>
+						<span class='node-duration'>0h 0m 11s+734ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:24:39 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='0.png' width='10%' src='' data-src='0.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='45'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a opcao vender</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:39 PM</span>
+						<span class='node-duration'>0h 0m 2s+636ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:24:42 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='1.png' width='10%' src='' data-src='1.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='46'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Escolher a maquina MOB</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:42 PM</span>
+						<span class='node-duration'>0h 0m 1s+894ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:24:43 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='2.png' width='10%' src='' data-src='2.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='47'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar o endereco</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:43 PM</span>
+						<span class='node-duration'>0h 0m 1s+817ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:24:45 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='3.png' width='10%' src='' data-src='3.png'></li>
+												<li><img data-featherlight='4.png' width='10%' src='' data-src='4.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='48'>
+					<div class='collapsible-header'>
+						<div class='node-name'>And Informar dados do meu negocio "CNPJ" com "Loja CNPJ BB"</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:45 PM</span>
+						<span class='node-duration'>0h 0m 6s+954ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:24:52 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='5.png' width='10%' src='' data-src='5.png'></li>
+												<li><img data-featherlight='6.png' width='10%' src='' data-src='6.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='49'>
+					<div class='collapsible-header'>
+						<div class='node-name'>When Informar dados bancarios "BB"</div>						
+						<span class='node-time'>Apr 5, 2018 04:24:52 PM</span>
+						<span class='node-duration'>0h 0m 23s+978ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:25:16 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='7.png' width='10%' src='' data-src='7.png'></li>
+												<li><img data-featherlight='8.png' width='10%' src='' data-src='8.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+				<li class='node level-3 leaf pass' status='pass' test-id='50'>
+					<div class='collapsible-header'>
+						<div class='node-name'>Then Deve acessar a tela de pagamento</div>						
+						<span class='node-time'>Apr 5, 2018 04:25:16 PM</span>
+						<span class='node-duration'>0h 0m 11s+331ms</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+						<div class='collapsible-body'>
+								<div class='node-steps'>
+									<table class='bordered table-results'>
+										<thead>
+											<tr>
+												<th>Status</th>
+												<th>Timestamp</th>
+												<th>Details</th>
+											</tr>
+										</thead>
+										<tbody>
+												<tr class='log' status='pass'>
+													<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+													<td class='timestamp'>4:25:28 PM</td>
+													<td class='step-details'>passed</td>
+												</tr>
+										</tbody>
+									</table>
+										<ul class='screenshots'>
+												<li><img data-featherlight='9.png' width='10%' src='' data-src='9.png'></li>
+										</ul>
+								</div>
+						</div>
+				</li>
+						</ul>
 				</li>
 						</ul>
 				</li>
@@ -473,15 +1657,16 @@
 				
 				<li class='category displayed active'>
 					<div class='category-heading'>
-						<span class='category-name'>@CompraMaquina</span>
+						<span class='category-name'>@Esquemadecenario</span>
 						<span class='category-status right'>
-							<span class='label pass'>1</span>
+							<span class='label pass'>3</span>
+							<span class='label fail'>4</span>
 						</span>
 					</div>
 					<div class='category-content hide'>
 						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
+							<span class='label green accent-4 white-text'>Passed: 3</span>
+							<span class='label red lighten-1 white-text'>Failed: 4</span>
 							
 						</div>
 					
@@ -496,76 +1681,38 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>Mar 16, 2018 04:49:03 PM</td>
-										<td class='linked' test-id='1'>Compra de maquininha CPF CIELO</td>
+										<td>Apr 5, 2018 04:19:45 PM</td>
+										<td class='linked' test-id='1'>Teste Esquema de Cenario</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Apr 5, 2018 04:19:45 PM</td>
+										<td class='linked' test-id='3'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF</td>
 										<td><span class='test-status pass'>pass</span></td>
 									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@CIELO</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
 									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Mar 16, 2018 04:49:03 PM</td>
-										<td class='linked' test-id='1'>Compra de maquininha CPF CIELO</td>
+										<td>Apr 5, 2018 04:20:46 PM</td>
+										<td class='linked' test-id='11'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF</td>
 										<td><span class='test-status pass'>pass</span></td>
 									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</li>
-				<li class='category displayed active'>
-					<div class='category-heading'>
-						<span class='category-name'>@CPF</span>
-						<span class='category-status right'>
-							<span class='label pass'>1</span>
-						</span>
-					</div>
-					<div class='category-content hide'>
-						<div class='category-status-counts'>
-							<span class='label green accent-4 white-text'>Passed: 1</span>
-							
-							
-						</div>
-					
-						<div class='category-tests'>
-							<table class='bordered table-results'>
-								<thead>
 									<tr>
-										<th>Timestamp</th>
-										<th>TestName</th>
-										<th>Status</th>
+										<td>Apr 5, 2018 04:21:42 PM</td>
+										<td class='linked' test-id='19'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF</td>
+										<td><span class='test-status fail'>fail</span></td>
 									</tr>
-								</thead>
-								<tbody>
 									<tr>
-										<td>Mar 16, 2018 04:49:03 PM</td>
-										<td class='linked' test-id='1'>Compra de maquininha CPF CIELO</td>
+										<td>Apr 5, 2018 04:22:34 PM</td>
+										<td class='linked' test-id='27'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Apr 5, 2018 04:23:27 PM</td>
+										<td class='linked' test-id='35'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Apr 5, 2018 04:24:27 PM</td>
+										<td class='linked' test-id='43'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF</td>
 										<td><span class='test-status pass'>pass</span></td>
 									</tr>
 								</tbody>
@@ -585,6 +1732,92 @@
 	</div>
 </div>
 <!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>org.junit.ComparisonFailure</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>3</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Apr 5, 2018 04:22:24 PM</td>
+                                                        <td class='linked' test-id='26'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF.Then Deve acessar a tela de pagamento</td>
+                                                        <td><pre><textarea>org.junit.ComparisonFailure: expected:<[Faça o pagamento da(s) suas maquininha(s)]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at CucumberFrame.stepsFiles.Login.deve_acessar_a_tela_de_pagamento(Login.java:303)
+	at ✽.Then Deve acessar a tela de pagamento(esquemacenario.feature:12)
+</textarea></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apr 5, 2018 04:23:17 PM</td>
+                                                        <td class='linked' test-id='34'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF.Then Deve acessar a tela de pagamento</td>
+                                                        <td><pre><textarea>org.junit.ComparisonFailure: expected:<[Faça o pagamento da(s) suas maquininha(s)]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at CucumberFrame.stepsFiles.Login.deve_acessar_a_tela_de_pagamento(Login.java:303)
+	at ✽.Then Deve acessar a tela de pagamento(esquemacenario.feature:12)
+</textarea></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Apr 5, 2018 04:24:17 PM</td>
+                                                        <td class='linked' test-id='42'>Teste Esquema de Cenario.Scenario Outline: Compra da maquina por CPF.Scenario: Compra da maquina por CPF.Then Deve acessar a tela de pagamento</td>
+                                                        <td><pre><textarea>org.junit.ComparisonFailure: expected:<[Faça o pagamento da(s) suas maquininha(s)]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at CucumberFrame.stepsFiles.Login.deve_acessar_a_tela_de_pagamento(Login.java:303)
+	at ✽.Then Deve acessar a tela de pagamento(esquemacenario.feature:12)
+</textarea></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
@@ -594,31 +1827,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>7</div>
+					<div class='panel-lead'>42</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>7</div>
+					<div class='panel-lead'>42</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Mar 16, 2018 04:49:03 PM</div>
+					<div class='panel-lead'>Apr 5, 2018 04:19:45 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Mar 16, 2018 04:50:00 PM</div>
+			 		<div class='panel-lead'>Apr 5, 2018 04:25:28 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>56,869ms</div>
+					<div class='panel-lead'>342,882ms</div>
 				</div>
 			</div>
 			<div class='col s4'>
@@ -633,21 +1866,9 @@
 							<th>Others</th>
 						</tr>
 						<tr>
-							<td>@CompraMaquina</td>
-							<td>1</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@CIELO</td>
-							<td>1</td>
-							<td>0</td>
-							<td>0</td>
-						</tr>
-						<tr>
-							<td>@CPF</td>
-							<td>1</td>
-							<td>0</td>
+							<td>@Esquemadecenario</td>
+							<td>3</td>
+							<td>4</td>
 							<td>0</td>
 						</tr>
 					</table>
@@ -663,22 +1884,22 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 7,
-				failParent: 0,
+				passParent: 39,
+				failParent: 3,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 3,
 				
-				passChild: 7,
-				failChild: 0,
+				passChild: 39,
+				failChild: 3,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
 				infoChild: 0,
-				exceptionsChild: 0,
+				exceptionsChild: 3,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

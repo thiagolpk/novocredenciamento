@@ -43,13 +43,18 @@ public class Dados_Estabelecimento {
 	    return element;	 
 	}
 	
+	public static WebElement inscEstadual (WebDriver driver){
+	    element = driver.findElement(By.name("inc-est"));
+	    return element;	 
+	}
+	
 	public static WebElement categoria (WebDriver driver){
 	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/button/span"));
 	    return element;	 
 	}
 	
 	public static WebElement selecionaCategoria (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[5]/div/div/button[5]"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/div/button[5]"));
 	    return element;	 
 	}
 	
@@ -59,29 +64,29 @@ public class Dados_Estabelecimento {
 	}
 	
 	public static WebElement selecionaSubCategoria (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[6]/div/div/button[3]"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/div/button[1]"));
 	    return element;	 
 	}
 	////////////CPF/////////////
 	public static WebElement categoriaCpf (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/button/span"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/button/span"));
 	  //  element = driver.findElement(By.cssSelector("a[class='custom-label']"));
 	    return element;	 
 	}
 	
 	
 	public static WebElement selecionaCategoriaCpf (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[7]/div/div/button[5]"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/div/button[5]"));
 	    return element;	 
 	}
 	
 	public static WebElement subCategoriaCpf (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/button/span"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[9]/div/button/span"));
 	    return element;	 
 	}
 	
 	public static WebElement selecionaSubCategoriaCpf (WebDriver driver){
-		element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[8]/div/div/button[1]"));
+		element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[9]/div/div/button[1]"));
 	    return element;	 
 	}
 	
@@ -113,12 +118,12 @@ public class Dados_Estabelecimento {
 	}
 	
 	public static WebElement continuar (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[12]/div/div[2]/div/a"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[15]/div/div/div[2]/div/a"));
 	    return element;	 
 	}
 	
 	public static WebElement continuarCpf (WebDriver driver){
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[10]/div/div/div[2]/div/a"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div[2]/div[2]/div[2]/div[3]/div/div[11]/div/div/div[2]/div/a"));
 	    return element;	 
 	}
 	

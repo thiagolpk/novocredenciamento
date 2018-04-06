@@ -36,7 +36,7 @@ public class Login_Gerente_BRA {
 	
 	public static WebElement acessar (WebDriver driver){
 		 
-		    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div/div/div[2]/div/div[4]/div/a"));
+		    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[4]/div/div/a"));
 		 
 		 return element;
 		 

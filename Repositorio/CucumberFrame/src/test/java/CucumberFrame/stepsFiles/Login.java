@@ -9,10 +9,16 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.*;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +32,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 //import com.sun.jna.platform.FileUtils;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -85,7 +92,7 @@ public class Login {
 	int contador;
 
 	WebDriver driver = new ChromeDriver();
-	//WebDriver driver = new InternetExplorerDriver();
+	String emailglobal = null;
 	
 	@Given("^Usuario acessa o site de compra de maquininha$")
 	public void usuario_acessa_o_site_de_compra_de_maquininhas() throws Throwable {
@@ -102,6 +109,8 @@ public class Login {
 		Login_Gerente_BRA.nome(driver).sendKeys("Operador Bradesco");
 		Login_Gerente_BRA.agencia(driver).sendKeys("1234");
 		Login_Gerente_BRA.funcional(driver).sendKeys("3333333");
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("scroll(0, 250);");
 		gerar_evidencia(contador); contador++;
 		Login_Gerente_BRA.acessar(driver).click();
 	}
@@ -114,19 +123,22 @@ public class Login {
 		Login_Gerente_BB.nome(driver).sendKeys("Operador BB");
 		Login_Gerente_BB.agencia(driver).sendKeys("1234");
 		Login_Gerente_BB.matricula(driver).sendKeys("F6666666");
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("scroll(0, 250);");
 		gerar_evidencia(contador); contador++;
 		Login_Gerente_BB.acessar(driver).click();
 	}
 	
 	@Given("^Usuario acessa o site de compra de maquininha CIELO$")
-	public void usuario_acessa_o_site_de_compra_de_maquininhas_CIELO() throws Throwable {
+	public void usuario_acessa_o_site_de_compra_de_maquininha_CIELO() throws Throwable {
 		driver.manage().window().maximize();
 		driver.get("https://credenciamento.hml.stelo.com.br/credenciamento/cielo");
-
 		Login_Cielo.nome(driver).sendKeys("Operador Cielo");
 		Login_Cielo.cpf(driver).sendKeys(geradorcpf);
 		Login_Cielo.loja(driver).click();
 		gerar_evidencia(contador); contador++;
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("scroll(0, 250);");
 		Login_Cielo.acessar(driver).click();
 	}
 	
@@ -161,19 +173,22 @@ public class Login {
 	}
 
 	@And("^Informar dados do meu negocio CNPJ$")
-	public void informar_dados_do_meu_negocio_CNPJ() throws Throwable {
+	public void informar_dados_do_meu_negocio_CNPJ(String nomeFantasia) throws Throwable {
 		Dados_Estabelecimento.documento(driver).sendKeys(geradorcnpj);
 		Thread.sleep(1000);
 		Dados_Estabelecimento.email(driver).sendKeys(strDataAtual + "@gmail.com");
 		Dados_Estabelecimento.confirmaEmail(driver).sendKeys(strDataAtual + "@gmail.com");
+		emailglobal = strDataAtual + "@gmail.com";
 		Dados_Estabelecimento.razaoSocial(driver).sendKeys("Automacao Comercio Eletronico Ltda");
-		Dados_Estabelecimento.nomeFantasia(driver).sendKeys("Automacao Gamers Club");
+		Dados_Estabelecimento.nomeFantasia(driver).sendKeys(nomeFantasia);
 		gerar_evidencia(contador); contador++;
+		Dados_Estabelecimento.inscEstadual(driver).sendKeys("123456789012");
 		Dados_Estabelecimento.categoria(driver).click();
 		Dados_Estabelecimento.selecionaCategoria(driver).click();
 		Thread.sleep(500);
 		Dados_Estabelecimento.subCategoria(driver).click();
 		Dados_Estabelecimento.selecionaSubCategoria(driver).click();
+		Thread.sleep(500);
 		Dados_Estabelecimento.celular(driver).sendKeys("11912341234");
 		Dados_Estabelecimento.idFatura(driver).sendKeys("Gamers Club");
 		Dados_Estabelecimento.nomeResponsavel(driver).sendKeys("Proprietario Responsavel");
@@ -185,17 +200,19 @@ public class Login {
 	}
 
 	@And("^Informar dados do meu negocio CPF$")
-	public void informar_dados_do_meu_negocio_CPF() throws Throwable {
+	public void informar_dados_do_meu_negocio_CPF(String nomeFantasia) throws Throwable {
 		Dados_Estabelecimento.cliqueCPF(driver).click();
 		Dados_Estabelecimento.documento(driver).sendKeys(geradorcpf);
 		Thread.sleep(1000);
 		Dados_Estabelecimento.email(driver).sendKeys(strDataAtual + "@gmail.com");
 		Dados_Estabelecimento.confirmaEmail2(driver).sendKeys(strDataAtual + "@gmail.com");
+		emailglobal = strDataAtual + "@gmail.com";
 		Dados_Estabelecimento.nomeCompleto(driver).sendKeys("Proprietario Nome");
 		Dados_Estabelecimento.dataNasc(driver).sendKeys("01011999");
+		Thread.sleep(500);
 		Dados_Estabelecimento.celular(driver).sendKeys("11912341234");
 		gerar_evidencia(contador); contador++;
-		Dados_Estabelecimento.nomeFantasia(driver).sendKeys("Automacao Gamers Club");
+		Dados_Estabelecimento.nomeFantasia(driver).sendKeys(nomeFantasia);
 		gerar_evidencia(contador); contador++;
 		Dados_Estabelecimento.categoriaCpf(driver).click();
 		Dados_Estabelecimento.selecionaCategoriaCpf(driver).click();
@@ -255,20 +272,78 @@ public class Login {
 	}
 
 	@Then("^Deve acessar a tela de pagamento$")
-	public void deve_acessar_a_tela_de_pagamento() throws Throwable {
-		try{
-			Thread.sleep(10000);
+	public void deve_acessar_a_tela_de_pagamento() throws ClassNotFoundException {
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			Connection conn = null;
+			String url = "jdbc:oracle:thin:@10.150.51.173:1521:HMLTRNG";
+			String username = "udb_inmetrics";
+			String password = "stinm2910";
+
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection(url, username, password);
+				String sqlQuerry = "select * from USR_GEPD.TB_VDA_MAQNA order by DT_INCL desc";
+				Statement statement = conn.createStatement();
+				ResultSet result = statement.executeQuery(sqlQuerry);
+				result.next();
+				System.out.println(result.getString("EMAIL"));
+				if(result.getString("EMAIL").equals(emailglobal))
+					System.out.println("email confere com a base");
+			} catch (Exception e) {
+				System.out.println(e);
+			} finally {
+				if (conn != null) {
+					conn = null;
+				}
+			}
 			assertEquals("Faça o pagamento da(s) suas maquininha(s)", driver.findElement(By.xpath("/html/body/div[3]")).getText());
-			gerar_evidencia(contador); contador++;		
+			try {
+				gerar_evidencia(contador);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} contador++;		
 			for(String winHandle : driver.getWindowHandles()){
 				driver.switchTo().window(winHandle);
 				driver.close();
 			}
-		
-		}
-		catch (Exception e) {
-			gerar_evidencia(contador); contador++;
-			driver.close();
+	}
+
+	
+	@Given("^Usuario acessa o site de compra de maquininha \"([^\"]*)\"$")
+		public void usuario_acessa_o_site_de_compra_de_maquininha(String arg1) throws Throwable {
+		if("CIELO".equalsIgnoreCase(arg1)) {
+			usuario_acessa_o_site_de_compra_de_maquininha_CIELO();
+		}else if("BRA".equalsIgnoreCase(arg1)) {
+			usuario_acessa_o_site_de_compra_de_maquininhas_Bradesco();
+		}else if("BB".equalsIgnoreCase(arg1)) {
+			usuario_acessa_o_site_de_compra_de_maquininhas_BB();
 		}
 	}
+
+	@And("^Informar dados do meu negocio \"([^\"]*)\" com \"([^\"]*)\"$")
+		public void informar_dados_do_meu_negocio_com(String arg1, String arg2) throws Throwable {
+		if("CPF".equalsIgnoreCase(arg1)) {
+			informar_dados_do_meu_negocio_CPF(arg2);
+		}else if("CNPJ".equalsIgnoreCase(arg1)) {
+			informar_dados_do_meu_negocio_CNPJ(arg2);
+		}
+		
+	}
+	
+	@When("^Informar dados bancarios \"([^\"]*)\"$")
+	public void informar_dados_bancarios(String arg1) throws Throwable {
+	if("CIELO".equalsIgnoreCase(arg1)) {
+		informar_dados_bancarios();
+	}else if("BRA".equalsIgnoreCase(arg1)) {
+		informar_dados_bancarios_BRA();
+	}else if("BB".equalsIgnoreCase(arg1)) {
+		informar_dados_bancarios_BB();
+	}
+	
+}
+	
 }

@@ -10,7 +10,7 @@ public class Envio_Link_Vender {
 	 
 	public static WebElement vender (WebDriver driver){
 	 
-	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div[1]/div[3]/div/div[2]/div[1]/div/a"));
+	    element = driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div/div[2]/div[1]/div/div[3]/div/div[2]/div/div/a"));
 
 	    return element;
 	 

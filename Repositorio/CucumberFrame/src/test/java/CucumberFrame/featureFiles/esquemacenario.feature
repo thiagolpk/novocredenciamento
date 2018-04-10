@@ -1,4 +1,4 @@
-@Esquemadecenario
+@Esquemadecenario @Teste
 Feature: Teste Esquema de Cenario
 Eu quero testar o esquema de cenário
   
